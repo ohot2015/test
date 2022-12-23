@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
 import * as process from 'process';
 import { User } from './users/users.model';
+import { PolygonsModule } from './polygons/polygons.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: `.env` }),
@@ -19,6 +20,7 @@ import { User } from './users/users.model';
       synchronize: true,
     }),
     UsersModule,
+    PolygonsModule,
   ],
   controllers: [],
   providers: [],
