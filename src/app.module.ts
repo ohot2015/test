@@ -4,7 +4,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
 import * as process from 'process';
 import { User } from './users/users.model';
-import { PolygonsModule } from './polygons/polygons.module';
+import { PolygonModule } from './polygon/polygon.module';
+import { CottageModule } from './cottage/cottage.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { PolygonsModule } from './polygons/polygons.module';
       synchronize: true,
     }),
     UsersModule,
-    PolygonsModule,
+    PolygonModule,
+    CottageModule
   ],
   controllers: [],
   providers: [],
