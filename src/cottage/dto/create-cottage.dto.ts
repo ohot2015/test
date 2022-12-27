@@ -1,6 +1,8 @@
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsObject, IsString } from 'class-validator';
 
 export class CreateCottageDto {
-  @IsNumber()
+  @IsString()
   readonly floors: number;
+  @IsNumber()
+  readonly village: number;
 }

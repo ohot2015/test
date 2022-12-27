@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CottageService } from './cottage.service';
 import { CottageController } from './cottage.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Cottage } from './entities/cattage.entity';
+import { Cottage } from './entities/cottage.entity';
 
 @Module({
   controllers: [CottageController],

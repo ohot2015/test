@@ -12,7 +12,7 @@ export class PolygonController {
   }
 
   @Get('/:entity')
-  findByEntity(@Param('entity') entity: string, @Query() { id }) {
-    return this.polygonService.findByEntity(entity, Number(id));
+  findByEntity(@Query() { id }) {
+    return this.polygonService.findByEntity(Number(id));
   }
 }

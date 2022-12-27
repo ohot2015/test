@@ -10,12 +10,12 @@ export class Polygon extends Model<Polygon> {
   @Column({ type: DataType.BOOLEAN, allowNull: false, defaultValue: false })
   type: boolean;
 
-  @Column({ type: DataType.STRING, allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: false })
   coordinates: string;
 
-  @Column({ type: DataType.STRING, defaultValue: 'realty' })
+  @Column({ type: DataType.STRING, allowNull: false })
   entity: string;
 
-  @Column({ type: DataType.INTEGER, defaultValue: 999 })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   entityId: number;
 }

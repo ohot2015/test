@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CottageService } from './cottage.service';
 import { CreateCottageDto } from './dto/create-cottage.dto';
 
@@ -8,5 +8,9 @@ export class CottageController {
   @Post()
   create(@Body() cottageDto: CreateCottageDto) {
     return this.cottageService.create(cottageDto);
+  }
+  @Get()
+  getAll() {
+    return this.cottageService.getAll();
   }
 }

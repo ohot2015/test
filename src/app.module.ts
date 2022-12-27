@@ -6,6 +6,7 @@ import * as process from 'process';
 import { User } from './users/users.model';
 import { PolygonModule } from './polygon/polygon.module';
 import { CottageModule } from './cottage/cottage.module';
+import { VillageModule } from './village/village.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { CottageModule } from './cottage/cottage.module';
     }),
     UsersModule,
     PolygonModule,
-    CottageModule
+    CottageModule,
+    VillageModule
   ],
   controllers: [],
   providers: [],

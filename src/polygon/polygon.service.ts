@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreatePolygonDto } from './dto/create-polygon.dto';
 import { Polygon } from './entities/polygon.entity';
 import { InjectModel } from '@nestjs/sequelize';
-import { Cottage } from '../cottage/entities/cattage.entity';
 
 @Injectable()
 export class PolygonService {
@@ -12,10 +11,11 @@ export class PolygonService {
   async create(dto: CreatePolygonDto) {
     return await this.polygonRepository.create(dto);
   }
-  async findByEntity(entity: string, id: number) {
+  async findByEntity(id: number) {
     return await this.polygonRepository.sequelize.query(`
       select * from polygon as p
-      left join cottage as c ON c.id = p.id
+      left join cottage as c ON c.id = p.entityId
+      where c.id = ${id}
     `);
   }
 }
