@@ -10,9 +10,10 @@ import {
 import { VillageService } from './village.service';
 import { CreateVillageDto } from './dto/create-village.dto';
 import { UpdateVillageDto } from './dto/update-village.dto';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Village } from './entities/village.entity';
 
+@ApiTags('Коттеджный поселок')
 @Controller('village')
 export class VillageController {
   constructor(private readonly villageService: VillageService) {}
