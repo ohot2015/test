@@ -7,6 +7,8 @@ import { User } from './users/users.model';
 import { PolygonModule } from './polygon/polygon.module';
 import { CottageModule } from './cottage/cottage.module';
 import { VillageModule } from './village/village.module';
+import { DecorationModule } from './decoration/decoration.module';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
@@ -24,7 +26,9 @@ import { VillageModule } from './village/village.module';
     UsersModule,
     PolygonModule,
     CottageModule,
-    VillageModule
+    VillageModule,
+    DecorationModule,
+    ProjectModule
   ],
   controllers: [],
   providers: [],

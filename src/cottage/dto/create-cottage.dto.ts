@@ -1,8 +1,9 @@
-import { IsNumber, IsObject, IsString } from 'class-validator';
+import { IsNumber } from 'class-validator';
+import { Village } from '../../village/entities/village.entity';
 
 export class CreateCottageDto {
-  @IsString()
+  @IsNumber()
   readonly floors: number;
   @IsNumber()
-  readonly village: number;
+  readonly villageId: number;
 }

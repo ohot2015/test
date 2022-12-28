@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateVillageDto } from './dto/create-village.dto';
 import { UpdateVillageDto } from './dto/update-village.dto';
 import { InjectModel } from '@nestjs/sequelize';
@@ -17,15 +17,31 @@ export class VillageService {
     return await this.villageRepository.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} village`;
+  async findOne(id: number) {
+    return await this.villageRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateVillageDto: UpdateVillageDto) {
-    return `This action updates a #${id} village`;
+  async update(id: number, updateVillageDto: UpdateVillageDto) {
+    const village = await this.villageRepository.findByPk(id);
+    if (!village) {
+      throw new HttpException(
+        'Не найден коттеджный поселок',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    Object.assign(village, updateVillageDto);
+    return await village.save();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} village`;
+  async remove(id: number) {
+    const village = await this.villageRepository.findByPk(id);
+    if (!village) {
+      throw new HttpException(
+        'Не найден коттеджный поселок',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    return await village.destroy();
   }
 }

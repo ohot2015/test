@@ -10,16 +10,21 @@ import {
 import { VillageService } from './village.service';
 import { CreateVillageDto } from './dto/create-village.dto';
 import { UpdateVillageDto } from './dto/update-village.dto';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Village } from './entities/village.entity';
 
 @Controller('village')
 export class VillageController {
   constructor(private readonly villageService: VillageService) {}
 
+  @ApiOperation({ summary: 'Создание деревни' })
+  @ApiResponse({ status: 200, type: Village })
   @Post()
   create(@Body() createVillageDto: CreateVillageDto) {
     return this.villageService.create(createVillageDto);
   }
-
+  @ApiOperation({ summary: 'Получение всех деревень' })
+  @ApiResponse({ status: 200, type: [Village] })
   @Get()
   findAll() {
     return this.villageService.findAll();

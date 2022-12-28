@@ -8,5 +8,6 @@ import { Village } from './entities/village.entity';
   controllers: [VillageController],
   providers: [VillageService],
   imports: [SequelizeModule.forFeature([Village])],
+  exports: [VillageService],
 })
 export class VillageModule {}

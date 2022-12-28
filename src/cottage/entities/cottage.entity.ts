@@ -13,6 +13,9 @@ export class Cottage extends Model<Cottage> {
   @Column({ type: DataType.INTEGER, allowNull: true })
   floors: number;
 
-  @BelongsTo(() => Village, { foreignKey: 'id' })
-  village: number;
+  @ForeignKey(() => Village)
+  villageId: number;
+
+  @BelongsTo(() => Village)
+  village: Village;
 }
