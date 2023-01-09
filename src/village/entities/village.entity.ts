@@ -12,4 +12,6 @@ export class Village extends Model<Model> {
   })
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;
+  @Column({ type: DataType.INTEGER, allowNull: true })
+  externalId: number;
 }

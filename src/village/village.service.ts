@@ -34,7 +34,10 @@ export class VillageService {
   }
 
   async remove(id: number) {
-    const village = await this.villageRepository.findByPk(id);
+    //const village = await this.villageRepository.findByPk(id);
+    const village = await this.villageRepository.findOne({
+      where: { externalId: id },
+    });
     if (!village) {
       throw new HttpException(
         'Не найден коттеджный поселок',

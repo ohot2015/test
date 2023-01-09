@@ -13,22 +13,26 @@ import { ProjectModule } from './project/project.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: `.env` }),
-    SequelizeModule.forRoot({
-      dialect: 'mysql',
-      host: process.env.MYSQL_HOST,
-      username: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
-      models: [User],
-      autoLoadModels: true,
-      synchronize: true,
+    SequelizeModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: () => ({
+        dialect: 'mysql',
+        host: process.env.MYSQL_HOST,
+        port: +process.env.MYSQL_PORT,
+        username: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DATABASE,
+        autoLoadModels: true,
+        synchronize: true,
+        sync: { force: false, alter: true },
+      }),
     }),
     UsersModule,
     PolygonModule,
     CottageModule,
     VillageModule,
     DecorationModule,
-    ProjectModule
+    ProjectModule,
   ],
   controllers: [],
   providers: [],
